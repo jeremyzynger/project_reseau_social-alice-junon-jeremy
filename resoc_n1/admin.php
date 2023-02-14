@@ -12,7 +12,7 @@ include 'composants/header.php';
 include 'composants/callsql.php';
 //verification
 if ($mysqli->connect_errno) {
-    echo ("Échec de la connexion : " . $mysqli->connect_error);
+    echo ("Échec de la connexion : " . $mysqli->connect_error); 
     exit();
 }
 ?>
