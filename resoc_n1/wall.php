@@ -71,7 +71,11 @@ include 'composants/header.php';
         ?>
             <article>
                 <h3>
-                    <time datetime='<?php echo $post['created']?>'><?php echo $post['created']?></time>
+                   <time datetime='<?php echo $post['created']?>'><?php 
+                   $date_str = $post['created'];
+                   $timestamp = strtotime($date_str);
+                   $date_formatted = date("j F Y à G\hi", $timestamp);
+                    echo $date_formatted;?></time>
                 </h3>
                 <address>par <?php echo $post['author_name']?> </address>
                 <div>

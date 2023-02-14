@@ -31,14 +31,13 @@ include 'composants/header.php';
         $lesInformations = $mysqli->query($laQuestionEnSql);
         $tag = $lesInformations->fetch_assoc();
         //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par le label et effacer la ligne ci-dessous
-        echo "<pre>" . print_r($tag, 1) . "</pre>";
+        // echo "<pre>" . print_r($tag, 1) . "</pre>";
         ?>
         <img src="./img/user.jpg" alt="Portrait de l'utilisatrice" />
         <section>
             <h3>Présentation</h3>
             <p>Sur cette page vous trouverez les derniers messages comportant
-                le mot-clé XXX
-                (n° <?php echo $tagId ?>)
+                le mot-clé <?php echo $tag['label'] ?>
             </p>
 
         </section>
@@ -66,7 +65,7 @@ include 'composants/header.php';
                     ";
         $lesInformations = $mysqli->query($laQuestionEnSql);
         if (!$lesInformations) {
-            echo ("Échec de la requete : " . $mysqli->error);
+            // echo ("Échec de la requete : " . $mysqli->error);
         }
 
         /**
@@ -78,20 +77,25 @@ include 'composants/header.php';
         ?>
             <article>
                 <h3>
-                    <time datetime='2020-02-01 11:12:13'>31 février 2010 à 11h12</time>
+                    <time datetime='<?php echo $post['created']?>'><?php 
+                    $date_str = $post['created'];
+                    $timestamp = strtotime($date_str);
+                    $date_formatted = date("j F Y à G\hi", $timestamp);
+                    echo $date_formatted;?></time>
                 </h3>
-                <address>par AreTirer</address>
+                <address>par <?php echo $post['author_name']?></address>
                 <div>
-                    <p>Ceci est un paragraphe</p>
-                    <p>Ceci est un autre paragraphe</p>
-                    <p>... de toutes manières il faut supprimer cet
-                        article et le remplacer par des informations en
-                        provenance de la base de donnée</p>
+                    <p><?php echo $post['content']?></p>
                 </div>
                 <footer>
-                    <small>♥ 132</small>
-                    <a href="">#lorem</a>,
-                    <a href="">#piscitur</a>,
+                    <small>♥ <?php echo $post['like_number']?></small>
+                    <?php
+                    $taglist = $post['taglist'];
+                    $tags = explode(",", $post['taglist']);
+                    foreach ($tags as $value) {
+                        echo "<a href=''> #" . $value . "</a>";
+                    }
+                    ?>
                 </footer>
             </article>
         <?php } ?>
