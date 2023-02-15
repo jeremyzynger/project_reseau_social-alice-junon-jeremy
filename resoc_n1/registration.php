@@ -4,11 +4,11 @@
         <meta charset="utf-8">
         <title>ReSoC - Inscription</title> 
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="style1.css"/>
     </head>
     <body>
         <header>
-            <img src="resoc.jpg" alt="Logo de notre réseau social"/>
+            <a href="admin.php" alt="Logo de notre réseau social"><img src="./img/resoc.jpg" alt="Logo de notre réseau social"/></a> 
             <nav id="menu">
                 <a href="news.php">Actualités</a>
                 <a href="wall.php?user_id=5">Mur</a>

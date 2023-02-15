@@ -7,7 +7,7 @@
     </head>
     <body>
 <header>
-            <img src="./img/resoc.jpg" alt="Logo de notre réseau social"/>
+            <a href="admin.php" alt="Logo de notre réseau social"><img src="./img/resoc.jpg" alt="Logo de notre réseau social"/></a> 
             <nav id="menu">
                 <a href="news.php">Actualités</a>
                 <a href="wall.php?user_id=5">Mur</a>
