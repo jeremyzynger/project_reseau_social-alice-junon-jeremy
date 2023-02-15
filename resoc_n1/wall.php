@@ -31,12 +31,12 @@ include 'composants/header.php';
         $lesInformations = $mysqli->query($laQuestionEnSql);
         $user = $lesInformations->fetch_assoc();
         //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
-        //echo "<pre>" . print_r($user, 1) . "</pre>";
+        echo "<pre>" . print_r($user, 1) . "</pre>";
         ?>
         <img src="./img/user.jpg" alt="Portrait de l'utilisatrice" />
         <section>
             <h3>Présentation</h3>
-            <p>Sur cette page vous trouverez tous les message de l'utilisatrice : <?php echo $userId ?>
+            <p>Sur cette page vous trouverez tous les message de l'utilisatrice : <?php echo $user["alias"] ?>
             </p>
         </section>
     </aside>
@@ -72,18 +72,18 @@ include 'composants/header.php';
         ?>
             <article>
                 <h3>
-                   <time datetime='<?php echo $post['created']?>'><?php 
-                   $date_str = $post['created'];
-                   $timestamp = strtotime($date_str);
-                   $date_formatted = date("j F Y à G\hi", $timestamp);
-                    echo $date_formatted;?></time>
+                    <time datetime='<?php echo $post['created'] ?>'><?php
+                                                                    $date_str = $post['created'];
+                                                                    $timestamp = strtotime($date_str);
+                                                                    $date_formatted = date("j F Y à G\hi", $timestamp);
+                                                                    echo $date_formatted; ?></time>
                 </h3>
-                <address>par <a href="wall.php?user_id=<?php echo $post['id']?>"><?php echo $post['author_name']?></a></address>
+                <address>par <a href="wall.php?user_id=<?php echo $post['id'] ?>"><?php echo $post['author_name'] ?></a></address>
                 <div>
-                    <p><?php echo $post['content']?></p>
+                    <p><?php echo $post['content'] ?></p>
                 </div>
                 <footer>
-                    <small>♥ <?php echo $post['like_number']?></small>
+                    <small>♥ <?php echo $post['like_number'] ?></small>
                     <?php
                     $taglist = $post['taglist'];
                     $tags = explode(",", $post['taglist']);
