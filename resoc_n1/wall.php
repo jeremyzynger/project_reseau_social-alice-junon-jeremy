@@ -46,7 +46,8 @@ include 'composants/header.php';
          * Etape 3: récupérer tous les messages de l'utilisatrice
          */
         $laQuestionEnSql = "
-                    SELECT posts.content, posts.created, users.alias as author_name, 
+                    SELECT posts.content, posts.created, users.alias as author_name,
+                    users.id, 
                     COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist 
                     FROM posts
                     JOIN users ON  users.id=posts.user_id
@@ -77,7 +78,7 @@ include 'composants/header.php';
                    $date_formatted = date("j F Y à G\hi", $timestamp);
                     echo $date_formatted;?></time>
                 </h3>
-                <address>par <?php echo $post['author_name']?> </address>
+                <address>par <a href="wall.php?user_id=<?php echo $post['id']?>"><?php echo $post['author_name']?></a></address>
                 <div>
                     <p><?php echo $post['content']?></p>
                 </div>

@@ -41,7 +41,7 @@ include 'composants/header.php';
         ?>
         <article>
             <img src="./img/user.jpg" alt="blason" />
-            <h3>par <?php echo $post['alias']?> </h3>
+            <h3>par <a href="wall.php?user_id=<?php echo $post['id']?>"><?php echo $post['alias']?></a> </h3>
             <p><?php echo $post['id']?></p>
         </article>
         <?php } ?>

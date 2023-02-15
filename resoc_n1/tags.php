@@ -49,6 +49,7 @@ include 'composants/header.php';
          */
         $laQuestionEnSql = "
                     SELECT posts.content,
+                    users.id,
                     posts.created,
                     users.alias as author_name,  
                     count(likes.id) as like_number,  
@@ -83,7 +84,7 @@ include 'composants/header.php';
                     $date_formatted = date("j F Y à G\hi", $timestamp);
                     echo $date_formatted;?></time>
                 </h3>
-                <address>par <?php echo $post['author_name']?></address>
+                <address>par <a href="wall.php?user_id=<?php echo $post['id']?>"><?php echo $post['author_name']?></a></address>
                 <div>
                     <p><?php echo $post['content']?></p>
                 </div>

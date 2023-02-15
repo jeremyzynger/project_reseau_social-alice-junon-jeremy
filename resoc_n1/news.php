@@ -63,6 +63,7 @@ include 'composants/header.php';
         // si vous ne la comprenez pas c'est normal, passez, on y reviendra
         $laQuestionEnSql = "
                     SELECT posts.content,
+                    users.id,
                     posts.created,
                     users.alias as author_name,  
                     count(likes.id) as like_number,  
@@ -102,7 +103,7 @@ include 'composants/header.php';
                 <h3>
                     <time><?php echo $post['created'] ?></time>
                 </h3>
-                <address>par <?php echo $post['author_name'] ?></address>
+                <address>par <a href="wall.php?user_id=<?php echo $post['id']?>"><?php echo $post['author_name']?></a></address>
                 <div>
                     <p><?php echo $post['content'] ?></p>
                 </div>
