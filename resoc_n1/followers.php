@@ -22,6 +22,7 @@ include 'composants/header.php';
         // Etape 2: se connecter à la base de donnée
         include 'composants/callsql.php';
         // Etape 3: récupérer le nom de l'utilisateur
+        $sql = 
         $laQuestionEnSql = "
                     SELECT users.*
                     FROM followers
@@ -29,6 +30,7 @@ include 'composants/header.php';
                     WHERE followers.followed_user_id='$userId'
                     GROUP BY users.id
                     ";
+                
         $lesInformations = $mysqli->query($laQuestionEnSql);
         if (!$lesInformations) {
         echo ("Échec de la requete : " . $mysqli->error);
