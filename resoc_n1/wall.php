@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 
 <?php
@@ -13,7 +17,8 @@ include 'composants/header.php';
      * Documentation : https://www.php.net/manual/fr/reserved.variables.get.php
      * ... mais en résumé c'est une manière de passer des informations à la page en ajoutant des choses dans l'url
      */
-    $userId = intval($_GET['user_id']);
+    $userId = intval($_SESSION['connected_id']);
+
     ?>
     <?php
     /**
@@ -32,6 +37,7 @@ include 'composants/header.php';
         $user = $lesInformations->fetch_assoc();
         //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
         //echo "<pre>" . print_r($user, 1) . "</pre>";
+        echo "<pre>" . print_r($_SESSION['connected_id']) . "</pre>";
         ?>
         <img src="./img/user.jpg" alt="Portrait de l'utilisatrice" />
         <section>

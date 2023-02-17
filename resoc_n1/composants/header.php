@@ -12,9 +12,9 @@
         <a href="admin.php" alt="Logo de notre réseau social"><img src="./img/resoc.jpg" alt="Logo de notre réseau social" /></a>
         <nav id="menu">
             <a href="news.php">Actualités</a>
-            <a href="wall.php?user_id=5">Mur</a>
-            <a href="feed.php?user_id=5">Flux</a>
-            <a href="tags.php?tag_id=1">Mots-clés</a>
+            <a href="wall.php">Mur</a>
+            <a href="feed.php">Flux</a>
+            <a href="tags.php">Mots-clés</a>
         </nav>
         <nav id="user">
             <a href="#">Profil</a>

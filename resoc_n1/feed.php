@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 
 <?php
@@ -13,7 +16,7 @@ include 'composants/header.php';
     /**
      * Etape 1: Le mur concerne un utilisateur en particulier
      */
-    $userId = intval($_GET['user_id']);
+    $userId = intval($_SESSION['connected_id']);
     ?>
     <?php
     /**
@@ -32,6 +35,7 @@ include 'composants/header.php';
         $user = $lesInformations->fetch_assoc();
         //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
         //echo "<pre>" . print_r($user, 1) . "</pre>";
+        echo "<pre>" . print_r($_SESSION['connected_id']) . "</pre>";
         ?>
         <img src="./img/user.jpg" alt="Portrait de l'utilisatrice" />
         <section>
@@ -75,29 +79,29 @@ include 'composants/header.php';
         while ($post = $lesInformations->fetch_assoc()) {
 
         ?>
-        <article>
-            <h3>
-                <time datetime='<?php echo $post['created']?>'><?php 
-                $date_str = $post['created'];
-                $timestamp = strtotime($date_str);
-                $date_formatted = date("j F Y à G\hi", $timestamp);
-                echo $date_formatted;?></time>
-            </h3>
-            <address>par <a href="wall.php?user_id=<?php echo $post['id']?>"><?php echo $post['author_name']?></a></address>
-            <div>
-                <p><?php echo $post['content']?></p>
-            </div>
-            <footer>
-                <small>♥ <?php echo $post['like_number']?></small>
-                <?php
+            <article>
+                <h3>
+                    <time datetime='<?php echo $post['created'] ?>'><?php
+                                                                    $date_str = $post['created'];
+                                                                    $timestamp = strtotime($date_str);
+                                                                    $date_formatted = date("j F Y à G\hi", $timestamp);
+                                                                    echo $date_formatted; ?></time>
+                </h3>
+                <address>par <a href="wall.php?user_id=<?php echo $post['id'] ?>"><?php echo $post['author_name'] ?></a></address>
+                <div>
+                    <p><?php echo $post['content'] ?></p>
+                </div>
+                <footer>
+                    <small>♥ <?php echo $post['like_number'] ?></small>
+                    <?php
                     $taglist = $post['taglist'];
                     $tags = explode(",", $post['taglist']);
                     foreach ($tags as $value) {
                         echo "<a href=''> #" . $value . "</a>";
                     }
                     ?>
-            </footer>
-        </article>
+                </footer>
+            </article>
         <?php
         }
         ?>
