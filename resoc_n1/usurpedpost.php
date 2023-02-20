@@ -24,12 +24,16 @@ include 'composants/header.php';
             /**
              * Récupération de la liste des auteurs
              */
+            $userId = intval($_SESSION['connected_id']);
             $listAuteurs = [];
-            $laQuestionEnSql = "SELECT * FROM users";
+            $laQuestionEnSql = "SELECT * FROM users WHERE users.id = $userId";
             $lesInformations = $mysqli->query($laQuestionEnSql);
-            while ($user = $lesInformations->fetch_assoc()) {
-                $listAuteurs[$user['id']] = $user['alias'];
-            }
+            $user = $lesInformations->fetch_assoc();
+            var_dump($user['alias']);
+            $listAuteurs[$user['id']] = $user['alias'];
+
+
+            //}
 
 
             /**
