@@ -8,6 +8,10 @@ include 'composants/header.php';
 ?>
 <div id="wrapper">
     <?php
+
+    if (!isset($_SESSION['connected_id'])) {
+        header('Location: login.php');
+    }
     /**
      * Cette page est TRES similaire à wall.php. 
      * Vous avez sensiblement à y faire la meme chose.
