@@ -91,7 +91,7 @@ include 'composants/header.php';
                                                                     $date_formatted = date("j F Y à G\hi", $timestamp);
                                                                     echo $date_formatted; ?></time>
                 </h3>
-                <address>par <a href="wall.php</a></address>
+                <address>par <a href=" wall.php?user_id=<?php echo $post['id'] ?>"><?php echo $post['author_name'] ?></a></address>
                 <div>
                     <p><?php echo $post['content'] ?></p>
                 </div>
@@ -106,9 +106,7 @@ include 'composants/header.php';
                     ?>
                 </footer>
             </article>
-        <?php
-        }
-        ?>
+        <?php } ?>
 
 
     </main>
