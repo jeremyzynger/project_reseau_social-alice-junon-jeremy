@@ -17,11 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     <header>
         <a href="admin.php" alt="Logo de notre réseau social"><img src="./img/resoc.jpg" alt="Logo de notre réseau social" /></a>
         <nav id="menu">
-            <a href="news.php">Actualités</a>
-            <a href="wall.php">Mur</a>
-            <a href="feed.php">Flux</a>
-            <a href="tags.php">Mots-clés</a>
-            <a href="usurpedpost.php">Messages</a>
+            <a href="news.php">News</a>
+            <a href="wall.php">Wall</a>
+            <a href="feed.php">Feed</a>
+            <a href="tags.php">Hashtags</a>
+            <a href="usurpedpost.php">Message</a>
         </nav>
         <nav id="user">
             <a href="#">Profil</a>
