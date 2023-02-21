@@ -87,12 +87,15 @@ include 'composants/header.php';
     </aside>
     <main>
         <?php
+
+        include('addlike.php');
         /**
          * Etape 3: récupérer tous les messages de l'utilisatrice
          */
         $laQuestionEnSql = "
                     SELECT posts.content, posts.created, users.alias as author_name,
-                    users.id, 
+                    users.id,
+                    posts.id as post_id,
                     COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist 
                     FROM posts
                     JOIN users ON  users.id=posts.user_id
@@ -128,7 +131,12 @@ include 'composants/header.php';
                     <p><?php echo $post['content'] ?></p>
                 </div>
                 <footer>
-                    <small>♥ <?php echo $post['like_number'] ?></small>
+                    <small>
+                        <form method="post">
+                            <input type="hidden" value="<?php echo $post['post_id'] ?>" name="post_id"></input>
+                            <input type='submit' value="♥ <?php echo $post['like_number'] ?>">
+                        </form>
+                    </small>
                     <?php
                     $taglist = $post['taglist'];
                     $tags = explode(",", $post['taglist']);
