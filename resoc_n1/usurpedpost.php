@@ -8,11 +8,11 @@ include 'composants/header.php';
 
 <div id="wrapper">
 
-    <aside>
+    <!-- <aside>
         <h2>Présentation</h2>
         <p>Sur cette page on peut poster un message en se faisant
             passer pour quelqu'un d'autre</p>
-    </aside>
+    </aside> -->
     <main>
         <article>
             <h2>Poster un message</h2>
