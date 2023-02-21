@@ -1,10 +1,10 @@
 body{
-    background-color: #003;
+    background-color: #e8e8e8;
     font-family: Arial;
 }
 
 a{text-decoration: none; color:black;}
-a:hover{text-decoration: underline;}
+a:hover{text-decoration: none;}
 
 body>header{
     background-color: #fff;
@@ -21,7 +21,8 @@ body>header #menu {
     display:flex;
     width:50%;
     align-items: stretch;
-    border-left: 1px solid #99b;
+    border-left: 5px solid #F2F2F2F2;
+    border-radius: 3px;
 }
 body>header #menu a{
     flex:1;

@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
 
 <body>
     <header>
-        <a href="admin.php" alt="Logo de notre réseau social"><img src="./img/resoc.jpg" alt="Logo de notre réseau social" /></a>
+        <a href="admin.php" alt="Logo de notre réseau social"><img src="./avatars/admin-02.png" alt="Logo de notre réseau social" /></a>
         <nav id="menu">
             <a href="news.php">News</a>
             <a href="wall.php">Wall</a>
