@@ -60,13 +60,14 @@ include 'composants/header.php';
             echo "</article>";
             exit();
         }
-
+        include('addlike.php');
         // Etape 2: Poser une question à la base de donnée et récupérer ses informations
         // cette requete vous est donnée, elle est complexe mais correcte, 
         // si vous ne la comprenez pas c'est normal, passez, on y reviendra
         $laQuestionEnSql = "
                     SELECT posts.content,
                     users.id,
+                    posts.id as post_id,
                     posts.created,
                     users.alias as author_name,  
                     count(likes.id) as like_number,  
@@ -111,7 +112,12 @@ include 'composants/header.php';
                     <p><?php echo $post['content'] ?></p>
                 </div>
                 <footer>
-                    <small>♥ <?php echo $post['like_number'] ?> </small>
+                    <small>
+                        <form method="post">
+                            <input type="hidden" value="<?php echo $post['post_id'] ?>" name="post_id"></input>
+                            <input type='submit' value="♥ <?php echo $post['like_number'] ?>">
+                        </form>
+                    </small>
                     <?php
                     $taglist = $post['taglist'];
                     $tags = explode(",", $post['taglist']);
