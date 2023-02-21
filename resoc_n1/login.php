@@ -51,13 +51,13 @@ include 'composants/header.php';
                 $user = $res->fetch_assoc();
                 if (!$user or $user["password"] != $passwdAVerifier) {
                     echo "La connexion a échouée. ";
-                    echo "<pre>" . print_r($_SESSION['connected_id']) . "</pre>";
+                    // echo "<pre>" . print_r($_SESSION['connected_id']) . "</pre>";
                 } else {
                     echo "Votre connexion est un succès : " . $user['alias'] . ".";
                     // Etape 7 : Se souvenir que l'utilisateur s'est connecté pour la suite
                     // documentation: https://www.php.net/manual/fr/session.examples.basic.php
                     $_SESSION['connected_id'] = $user['id'];
-                    echo "<pre>" . print_r($_SESSION['connected_id']) . "</pre>";
+                    // echo "<pre>" . print_r($_SESSION['connected_id']) . "</pre>";
                 }
             }
             ?>
@@ -69,7 +69,7 @@ include 'composants/header.php';
                     <dt><label for='motpasse'>Mot de passe</label></dt>
                     <dd><input type='password' name='motpasse'></dd>
                 </dl>
-                <input type='submit'>
+                <input type='submit' <?php echo $user["alias"] ?>>
             </form>
             <p>
                 Pas de compte?

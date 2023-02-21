@@ -42,8 +42,8 @@ include 'composants/header.php';
         $user = $lesInformations->fetch_assoc();
         //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
         //echo "<pre>" . print_r($user, 1) . "</pre>";
-        echo "<pre>" . print_r($_SESSION['connected_id']) . "</pre>";
-        echo "<pre>" . print_r($user["id"]) . "</pre>";
+        // echo "<pre>" . print_r($_SESSION['connected_id']) . "</pre>";
+        // echo "<pre>" . print_r($user["id"]) . "</pre>";
 
         $enCoursDeTraitement = isset($_POST['follow']);
 
@@ -54,19 +54,20 @@ include 'composants/header.php';
             $instructionSql = "INSERT INTO followers" . "(id, followed_user_id, following_user_id)" . "VALUES (NULL,"
                 . $followed . ", " . $follower . ");";
             $ok = $mysqli->query($instructionSql);
-            var_dump($ok);
+            // var_dump($ok);
             if (!$ok) {
                 echo "impossible de s'abonner";
             } else {
-                echo "vous etes abonné";
+                // echo "vous etes abonné";
             }
         }
+
         ?>
         <img src="<?php echo $user["avatar"] ?>" alt="Portrait de l'utilisatrice" />
         <section>
-            <h3>Présentation</h3>
-            <p>Sur cette page vous trouverez tous les message de l'utilisatrice : <?php echo $user["alias"] ?>
-            </p>
+            <h3 class="nameuser"><?php echo $user["alias"] ?></h3>
+            <!-- <p>My name is :
+            </p> -->
         </section><?php
                     $follower = $_SESSION['connected_id'];
                     $followed = $user["id"];
@@ -75,14 +76,16 @@ include 'composants/header.php';
                     //var_dump($result->num_rows);
 
                     if ($follower == $followed) {
-                        echo "Vous ne pouvez pas vous suivre vous meme!";
+                        // echo "Vous ne pouvez pas vous suivre vous meme!";
                     } else if ($result->num_rows < 1) {
                     ?>
 
-            <form method='post'><button type="submit" name="follow">S'abonner à <?php echo $user["id"] ?></button></form>
+            <form method='post'><button class="follow" type="submit" name="follow">Follow <?php echo $user["alias"] ?></button></form>
         <?php } else {
-                        echo "Vous etes déjà abonné";
+                 include 'composants/buttonfollowed.php';
+                 // echo "Vous etes déjà abonné";
                     }
+                                
         ?>
     </aside>
     <main>
@@ -126,15 +129,15 @@ include 'composants/header.php';
                                                                     $date_formatted = date("j F Y à G\hi", $timestamp);
                                                                     echo $date_formatted; ?></time>
                 </h3>
-                <address>par <a href=" wall.php?user_id=<?php echo $post['id'] ?>"><?php echo $post['author_name'] ?></a></address>
+                <address>FROM <a href=" wall.php?user_id=<?php echo $post['id'] ?>"><?php echo $post['author_name'] ?></a></address>
                 <div>
                     <p><?php echo $post['content'] ?></p>
                 </div>
                 <footer>
                     <small>
                         <form method="post">
-                            <input type="hidden" value="<?php echo $post['post_id'] ?>" name="post_id"></input>
-                            <input type='submit' value="♥ <?php echo $post['like_number'] ?>">
+                            <input class="likebutton" type="hidden" value="<?php echo $post['post_id'] ?>" name="post_id"></input>
+                            <input class="likebutton" type='submit' value="♥ <?php echo $post['like_number'] ?>">
                         </form>
                     </small>
                     <?php

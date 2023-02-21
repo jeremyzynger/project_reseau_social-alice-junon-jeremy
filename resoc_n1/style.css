@@ -1,6 +1,73 @@
+@import url('https://fonts.cdnfonts.com/css/apercu');
+
 body{
     background-color: #e8e8e8;
-    font-family: Arial;
+    font-family: "apercu", sans-serif;
+    color: #222222;
+}
+
+.follow {
+  background-color: #72A7C6; 
+  border: none;
+  color: #FFFFFF;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 1vw;
+  border-radius: 4px;
+}
+
+.follow:hover {
+    background-color: #32769e; 
+}
+
+.followalready {
+    background-color: #aa314d; 
+    border: none;
+    color: #FFFFFF;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 1vw;
+    border-radius: 4px;
+  }
+
+.likebutton {
+  background-color: #C4728A; 
+  border: none;
+  color: #FFFFFF;
+  padding: 3px 19px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.likebutton:hover {
+    background-color: #a13958; 
+  }
+
+.likebutton:hover::after {
+    background-color: #a13958; 
+    border: none;
+    color: #FFFFFF;
+    padding: 3px 19px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.nameuser {
+    color: #222222;
+    font-size: 2vw;
+
 }
 
 a{text-decoration: none; color:black;}
@@ -12,7 +79,7 @@ body>header{
     width:80em;
     margin:0 auto 2em auto;    
     padding:0;
-
+    font-weight: 900;
 }
 body>header img{
     height:5em;
@@ -26,12 +93,14 @@ body>header #menu {
 body>header #menu a{
     flex:1;
     text-align: center;
+    color: #222222;
+    font-size: 1em;
     padding-top:2em;
-    border-right: 1px solid #99b;
+    border-right: 5px solid #F2F2F2F2;
 }
 body>header a:hover
 {
-    background-color: #99b;
+    background-color: rgb(205, 205, 205);
 }
 body>header ul{list-style: none;}
 body>header #user
@@ -67,22 +136,24 @@ body>header #user:hover ul{
     display:block;
 }
 
-
 #wrapper{
     display:flex;    
     width:80em;
+    height: 30em;
     margin:0 auto 2em auto;
 }
 #wrapper aside{
     background-color: #fff;
     flex:1;
     padding:1em;
-    border-radius: 1em;    
+    border-radius: 1em; 
+    text-align: center;   
 }
 #wrapper aside img{
     display: block;
     width:80%;
     margin:auto;
+    margin-top: 2vw;
 }
 
 #wrapper main{
@@ -106,10 +177,12 @@ body>header #user:hover ul{
 }
 #wrapper main article time{
     float:left;
+    font-weight: 900;
 }
 #wrapper main article address{
     text-align: right;
     margin-bottom: 1em;
+    font-weight: 900;
 }
 #wrapper main article p{
     margin:0;
