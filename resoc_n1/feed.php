@@ -52,12 +52,15 @@ include 'composants/header.php';
     </aside>
     <main>
         <?php
+
+        include('addlike.php');
         /**
          * Etape 3: récupérer tous les messages des abonnements
          */
         $laQuestionEnSql = "
                     SELECT posts.content,
                     users.id,
+                    posts.id as post_id,
                     posts.created,
                     users.alias as author_name,  
                     count(likes.id) as like_number,  
@@ -96,7 +99,12 @@ include 'composants/header.php';
                     <p><?php echo $post['content'] ?></p>
                 </div>
                 <footer>
-                    <small>♥ <?php echo $post['like_number'] ?></small>
+                    <small>
+                        <form method="post">
+                            <input type="hidden" value="<?php echo $post['post_id'] ?>" name="post_id"></input>
+                            <input type='submit' value="♥ <?php echo $post['like_number'] ?>">
+                        </form>
+                    </small>
                     <?php
                     $taglist = $post['taglist'];
                     $tags = explode(",", $post['taglist']);
