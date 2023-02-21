@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 
 <?php
@@ -10,7 +13,7 @@ include 'composants/header.php';
         <section>
             <h3>Présentation</h3>
             <p>Sur cette page vous trouverez la liste des personnes dont
-                l'utilisatrice n°<?php echo intval($_GET['user_id']) ?> 
+                l'utilisatrice n°<?php echo intval($_SESSION['connected_id']) ?>
                 suit les messages
             </p>
 
@@ -19,7 +22,7 @@ include 'composants/header.php';
     <main class='contacts'>
         <?php
         // Etape 1: récupérer l'id de l'utilisateur
-        $userId = intval($_GET['user_id']);
+        $userId = intval($_SESSION['connected_id']);
         // Etape 2: se connecter à la base de donnée
         include 'composants/callsql.php';
         // Etape 3: récupérer le nom de l'utilisateur
@@ -37,13 +40,13 @@ include 'composants/header.php';
         // Etape 4: à vous de jouer
         //@todo: faire la boucle while de parcours des abonnés et mettre les bonnes valeurs ci dessous 
         while ($post = $lesInformations->fetch_assoc()) {
-        // echo "<pre>" . print_r($post, 1) . "</pre>";
+            // echo "<pre>" . print_r($post, 1) . "</pre>";
         ?>
-        <article>
-            <img src="./img/user.jpg" alt="blason" />
-            <h3>par <a href="wall.php?user_id=<?php echo $post['id']?>"><?php echo $post['alias']?></a> </h3>
-            <p><?php echo $post['id']?></p>
-        </article>
+            <article>
+                <img src="./img/user.jpg" alt="blason" />
+                <h3>par <a href="wall.php?user_id=<?php echo $post['id'] ?>"><?php echo $post['alias'] ?></a> </h3>
+                <p><?php echo $post['id'] ?></p>
+            </article>
         <?php } ?>
     </main>
 </div>

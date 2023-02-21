@@ -72,7 +72,21 @@ include 'composants/header.php';
                 } else {
                     echo "Message posté en tant que :" . $listAuteurs[$authorId];
                 }
+                $texte = $postContent;
+                $expression = "/#(\w+)/u";
+                preg_match_all($expression, $texte, $matches);
+                $hashtags = $matches[1];
+
+                foreach ($hashtags as $hashtag) {
+                    $verif_hashtag = "SELECT * FROM tags WHERE tags.label = '$hashtag'";
+                    $res = $mysqli->query($verif_hashtag);
+                    if ($res && $res->num_rows == 0) {
+                        $add_hashtag = "INSERT INTO tags (label) VALUES ('$hashtag')";
+                        $ok = $mysqli->query($add_hashtag);
+                    }
+                }
             }
+
             ?>
             <form action="usurpedpost.php" method="post">
                 <input type='hidden' name='???' value='achanger'>
