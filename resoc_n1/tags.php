@@ -34,11 +34,10 @@ include 'composants/header.php';
         //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par le label et effacer la ligne ci-dessous
         // echo "<pre>" . print_r($tag, 1) . "</pre>";
         ?>
-        <img src="./img/user.jpg" alt="Portrait de l'utilisatrice" />
+        <img src="./img/hashtag-09.png" alt="Portrait de l'utilisatrice" />
         <section>
-            <h3>Présentation</h3>
-            <p>Sur cette page vous trouverez les derniers messages avec
-                le mot-clé <?php echo $tag['label'] ?>
+            <h3>HASHTAGS</h3> <br>
+            <p>
             </p><?php
 
                 $laQuestionEnSql = "SELECT * FROM `tags` LIMIT 50";

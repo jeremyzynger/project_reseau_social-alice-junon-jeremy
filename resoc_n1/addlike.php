@@ -1,4 +1,5 @@
 <?php
+if (isset($_SESSION['connected_id'])) {
 $like_sent = isset($_POST['post_id']);
 if ($like_sent) {
     $session_id = $_SESSION['connected_id'];
@@ -15,4 +16,6 @@ if ($like_sent) {
     } else {
         //echo "<article> Vous avez déjà liké ce post.</article>";
     }
+  }
+
 }

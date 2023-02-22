@@ -9,12 +9,10 @@ include 'composants/header.php';
 
 <div id="wrapper">
     <aside>
-        <img src="./img/user.jpg" alt="Portrait de l'utilisatrice" />
+        <img src="<?php echo ($_SESSION['avatar']) ?>" alt="Portrait de l'utilisatrice" />
         <section>
-            <h3>Présentation</h3>
-            <p>Sur cette page vous trouverez la liste des personnes dont
-                l'utilisatrice n°<?php echo intval($_SESSION['connected_id']) ?>
-                suit les messages
+            <h3><?php echo ($_SESSION['alias']) ?></h3>
+            <p>AI I follow
             </p>
 
         </section>
@@ -43,9 +41,9 @@ include 'composants/header.php';
             // echo "<pre>" . print_r($post, 1) . "</pre>";
         ?>
             <article>
-                <img src="./img/user.jpg" alt="blason" />
-                <h3>par <a href="wall.php?user_id=<?php echo $post['id'] ?>"><?php echo $post['alias'] ?></a> </h3>
-                <p><?php echo $post['id'] ?></p>
+                <img src="<?php echo $post['avatar'] ?>" alt="blason" />
+                <h3><a href="wall.php?user_id=<?php echo $post['id'] ?>"><?php echo $post['alias'] ?></a> </h3>
+                <p></p>
             </article>
         <?php } ?>
     </main>
