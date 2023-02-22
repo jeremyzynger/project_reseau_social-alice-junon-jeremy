@@ -1,7 +1,8 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     session_destroy();
-    header('Refresh:0');
+    // header('Refresh:0');
+    header('Location: login.php'); 
 }
 ?>
 <html lang="fr">
@@ -32,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
                 <li><a href="subscriptions.php">AI I follow</a></li>
                 <?php if (isset($_SESSION['connected_id'])) { ?>
                     <form method="post">
-                        <button class="sendbuttonred" type="sumbit" name="logout">Logout</button>
+                        <button class="sendbuttonred" type="sumbit" name="logout">Logout</button>  
                     </form>
                 <?php } ?>
             </ul>

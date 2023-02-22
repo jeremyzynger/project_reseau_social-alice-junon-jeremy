@@ -34,7 +34,7 @@ include 'composants/header.php';
         //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par le label et effacer la ligne ci-dessous
         // echo "<pre>" . print_r($tag, 1) . "</pre>";
         ?>
-        <img src="./img/hashtag-09.png" alt="Portrait de l'utilisatrice" />
+        <img src="./img/hashtaggoodcolor-09.png" alt="Portrait de l'utilisatrice" />
         <section>
             <h3>HASHTAGS</h3> <br>
             <p>
