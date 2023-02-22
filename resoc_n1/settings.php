@@ -1,19 +1,17 @@
+<?php
+session_start();
+?>
 <!doctype html>
-
 <?php
 include 'composants/header.php';
 ?>
-
 <div id="wrapper" class='profile'>
-
-
     <aside>
         <img src="./img/user.jpg" alt="Portrait de l'utilisatrice" />
         <section>
             <h3>Présentation</h3>
             <p>Sur cette page vous trouverez les informations de l'utilisatrice
-                n° <?php echo intval($_GET['user_id']) ?></p>
-
+                n° <?php echo intval($_SESSION['connected_id']) ?></p>
         </section>
     </aside>
     <main>
@@ -25,26 +23,24 @@ include 'composants/header.php';
          * Documentation : https://www.php.net/manual/fr/reserved.variables.get.php
          * ... mais en résumé c'est une manière de passer des informations à la page en ajoutant des choses dans l'url
          */
-        $userId = intval($_GET['user_id']);
-
+        $userId = intval($_SESSION['connected_id']);
         /**
          * Etape 2: se connecter à la base de donnée
          */
         include 'composants/callsql.php';
-
         /**
          * Etape 3: récupérer le nom de l'utilisateur
          */
         $laQuestionEnSql = "
-                    SELECT users.*, 
-                    count(DISTINCT posts.id) as totalpost, 
-                    count(DISTINCT given.post_id) as totalgiven, 
-                    count(DISTINCT recieved.user_id) as totalrecieved 
-                    FROM users 
-                    LEFT JOIN posts ON posts.user_id=users.id 
-                    LEFT JOIN likes as given ON given.user_id=users.id 
-                    LEFT JOIN likes as recieved ON recieved.post_id=posts.id 
-                    WHERE users.id = '$userId' 
+                    SELECT users.*,
+                    count(DISTINCT posts.id) as totalpost,
+                    count(DISTINCT given.post_id) as totalgiven,
+                    count(DISTINCT recieved.user_id) as totalrecieved
+                    FROM users
+                    LEFT JOIN posts ON posts.user_id=users.id
+                    LEFT JOIN likes as given ON given.user_id=users.id
+                    LEFT JOIN likes as recieved ON recieved.post_id=posts.id
+                    WHERE users.id = '$userId'
                     GROUP BY users.id
                     ";
         $lesInformations = $mysqli->query($laQuestionEnSql);
@@ -52,7 +48,6 @@ include 'composants/header.php';
             echo ("Échec de la requete : " . $mysqli->error);
         }
         $user = $lesInformations->fetch_assoc();
-
         /**
          * Etape 4: à vous de jouer
          */
@@ -73,10 +68,8 @@ include 'composants/header.php';
                 <dt>Nombre de "J'aime" reçus</dt>
                 <dd><?php echo $user['totalrecieved'] ?></dd>
             </dl>
-
         </article>
     </main>
 </div>
 </body>
-
 </html>

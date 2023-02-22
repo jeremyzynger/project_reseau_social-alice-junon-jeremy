@@ -15,7 +15,7 @@ include 'composants/header.php';
     </aside> -->
     <main>
         <article>
-            <h2>Poster un message</h2>
+            <h2>Write a New Post</h2>
             <?php
             /**
              * BD
@@ -46,7 +46,7 @@ include 'composants/header.php';
                 // on ne fait ce qui suit que si un formulaire a été soumis.
                 // Etape 2: récupérer ce qu'il y a dans le formulaire @todo: c'est là que votre travaille se situe
                 // observez le résultat de cette ligne de débug (vous l'effacerez ensuite)
-                echo "<pre>" . print_r($_POST, 1) . "</pre>";
+                // echo "<pre>" . print_r($_POST, 1) . "</pre>";
                 // et complétez le code ci dessous en remplaçant les ???
                 $authorId = $_POST['auteur'];
                 $postContent = $_POST['message'];
@@ -77,7 +77,7 @@ include 'composants/header.php';
             <form action="usurpedpost.php" method="post">
                 <input type='hidden' name='???' value='achanger'>
                 <dl>
-                    <dt><label for='auteur'>Auteur</label></dt>
+                    <dt><label for='auteur'>Writer</label></dt>
                     <dd><select name='auteur'>
                             <?php
                             foreach ($listAuteurs as $id => $alias)
@@ -87,7 +87,7 @@ include 'composants/header.php';
                     <dt><label for='message'>Message</label></dt>
                     <dd><textarea name='message'></textarea></dd>
                 </dl>
-                <input type='submit'>
+                <input class="sendbutton" type='submit'>
             </form>
         </article>
     </main>

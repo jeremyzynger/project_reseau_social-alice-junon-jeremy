@@ -1,18 +1,20 @@
+<?php
+session_start();
+?>
 <!doctype html>
-
 <?php
 include 'composants/header.php';
 ?>
-
 <div id="wrapper">
     <?php
     /**
-     * Cette page est similaire à wall.php ou feed.php 
+     * Cette page est similaire à wall.php ou feed.php
      * mais elle porte sur les mots-clés (tags)
      */
     /**
      * Etape 1: Le mur concerne un mot-clé en particulier
      */
+    $userId = intval($_SESSION['connected_id']);
     $tagId = intval($_GET['tag_id']);
     ?>
     <?php
@@ -21,7 +23,6 @@ include 'composants/header.php';
      */
     include 'composants/callsql.php';
     ?>
-
     <aside>
         <?php
         /**
@@ -36,44 +37,55 @@ include 'composants/header.php';
         <img src="./img/user.jpg" alt="Portrait de l'utilisatrice" />
         <section>
             <h3>Présentation</h3>
-            <p>Sur cette page vous trouverez les derniers messages comportant
+            <p>Sur cette page vous trouverez les derniers messages avec
                 le mot-clé <?php echo $tag['label'] ?>
-            </p>
-
+            </p><?php
+                $laQuestionEnSql = "SELECT * FROM `tags` LIMIT 50";
+                $lesInformations = $mysqli->query($laQuestionEnSql);
+                if (!$lesInformations) {
+                    echo ("Échec de la requete : " . $mysqli->error);
+                    exit();
+                }
+                while ($tag = $lesInformations->fetch_assoc()) {
+                ?>
+                <b>
+                    <a href="tags.php?tag_id=<?php echo $tag['id'] ?>"><?php echo "#" . $tag['label'] ?></a>
+                </b>
+            <?php } ?>
         </section>
     </aside>
     <main>
         <?php
+        include('addlike.php');
         /**
          * Etape 3: récupérer tous les messages avec un mot clé donné
          */
         $laQuestionEnSql = "
                     SELECT posts.content,
-                    users.id,
+                    posts.id as post_id,
+                    users.id as user_id,
                     posts.created,
-                    users.alias as author_name,  
-                    count(likes.id) as like_number,  
-                    GROUP_CONCAT(DISTINCT tags.label) AS taglist 
-                    FROM posts_tags as filter 
+                    users.alias as author_name,
+                    count(likes.id) as like_number,
+                    GROUP_CONCAT(DISTINCT tags.label) AS taglist
+                    FROM posts_tags as filter
                     JOIN posts ON posts.id=filter.post_id
                     JOIN users ON users.id=posts.user_id
-                    LEFT JOIN posts_tags ON posts.id = posts_tags.post_id  
-                    LEFT JOIN tags       ON posts_tags.tag_id  = tags.id 
-                    LEFT JOIN likes      ON likes.post_id  = posts.id 
-                    WHERE filter.tag_id = '$tagId' 
+                    LEFT JOIN posts_tags ON posts.id = posts_tags.post_id
+                    LEFT JOIN tags       ON posts_tags.tag_id  = tags.id
+                    LEFT JOIN likes      ON likes.post_id  = posts.id
+                    WHERE filter.tag_id = '$tagId'
                     GROUP BY posts.id
-                    ORDER BY posts.created DESC  
+                    ORDER BY posts.created DESC
                     ";
         $lesInformations = $mysqli->query($laQuestionEnSql);
         if (!$lesInformations) {
             // echo ("Échec de la requete : " . $mysqli->error);
         }
-
         /**
          * Etape 4: @todo Parcourir les messsages et remplir correctement le HTML avec les bonnes valeurs php
          */
         while ($post = $lesInformations->fetch_assoc()) {
-
             //echo "<pre>" . print_r($post, 1) . "</pre>";
         ?>
             <article>
@@ -89,21 +101,36 @@ include 'composants/header.php';
                     <p><?php echo $post['content'] ?></p>
                 </div>
                 <footer>
-                    <small>♥ <?php echo $post['like_number'] ?></small>
+                    <small>
+                        <form method="post">
+                            <input class="likebutton" type="hidden" value="<?php echo $post['post_id'] ?>" name="post_id"></input>
+                            <input class="likebutton" type='submit' value="♥ <?php echo $post['like_number'] ?>">
+                        </form>
+                    </small>
                     <?php
                     $taglist = $post['taglist'];
                     $tags = explode(",", $post['taglist']);
                     foreach ($tags as $value) {
-                        echo "<a href=''> #" . $value . "</a>";
+                    ?>
+                        <a href="tags.php?tag_id=<?php echo $tag['id'] ?>"><?php echo "#" . $value ?></a>
+                    <?php
                     }
                     ?>
                 </footer>
             </article>
         <?php } ?>
-
-
     </main>
 </div>
 </body>
-
 </html>
+
+
+
+
+
+
+
+
+
+
+
