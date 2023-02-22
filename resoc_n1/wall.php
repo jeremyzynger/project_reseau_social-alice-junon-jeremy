@@ -34,21 +34,19 @@ include 'composants/header.php';
     ?>
 
     <aside>
-        <?php
-        /**
-         * Etape 3: récupérer le nom de l'utilisateur
-         */
-        $laQuestionEnSql = "SELECT * FROM users WHERE id= '$userId' ";
-        $lesInformations = $mysqli->query($laQuestionEnSql);
-        $user = $lesInformations->fetch_assoc();
-        //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
-        //echo "<pre>" . print_r($user, 1) . "</pre>";
-        // echo "<pre>" . print_r($_SESSION['connected_id']) . "</pre>";
-        // echo "<pre>" . print_r($user["id"]) . "</pre>";
+    <?php
+/**
+ * Etape 3: récupérer le nom de l'utilisateur
+ */
+$laQuestionEnSql = "SELECT * FROM users WHERE id= '$userId' ";
+$lesInformations = $mysqli->query($laQuestionEnSql);
+$user = $lesInformations->fetch_assoc();
+//@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
+//echo "<pre>" . print_r($user, 1) . "</pre>";
+// echo "<pre>" . print_r($_SESSION['connected_id']) . "</pre>";
+// echo "<pre>" . print_r($user["id"]) . "</pre>";
 
-        $enCoursDeTraitement = isset($_POST['follow']);
-
-
+$enCoursDeTraitement = isset($_POST['follow']);
         if ($enCoursDeTraitement) {
             $follower = $_SESSION['connected_id'];
             $followed = $user["id"];
@@ -63,10 +61,10 @@ include 'composants/header.php';
             }
         }
 
-        ?>
-        <img src="<?php echo $user["avatar"] ?>" alt="Portrait de l'utilisatrice" />
-        <section>
-            <h3 class="nameuser"><?php echo $user["alias"] ?></h3>
+?>
+<img src="<?php echo $user["avatar"] ?>" alt="Portrait de l'utilisatrice" />
+<section>
+    <h3 class="nameuser"><?php echo $user["alias"] ?></h3>
             <!-- <p>My name is :
             </p> -->
         </section><?php

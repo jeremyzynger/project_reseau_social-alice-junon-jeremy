@@ -39,13 +39,12 @@ include 'composants/header.php';
         $user = $lesInformations->fetch_assoc();
         //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
         //echo "<pre>" . print_r($user, 1) . "</pre>";
-        echo "<pre>" . print_r($_SESSION['connected_id']) . "</pre>";
+        // echo "<pre>" . print_r($_SESSION['connected_id']) . "</pre>";
         ?>
-        <img src="./img/user.jpg" alt="Portrait de l'utilisatrice" />
+        <img src="<?php echo $user["avatar"] ?>" alt="Portrait de l'utilisatrice" />
         <section>
-            <h3>Présentation</h3>
-            <p>Sur cette page vous trouverez tous les message des utilisatrices
-                auxquel est abonnée l'utilisatrice <?php echo $user['alias'] ?>
+            <h3 class="nameuser"><?php echo $user["alias"] ?></h3>
+            <p>AI I follow
             </p>
 
         </section>
@@ -101,8 +100,8 @@ include 'composants/header.php';
                 <footer>
                     <small>
                         <form method="post">
-                            <input type="hidden" value="<?php echo $post['post_id'] ?>" name="post_id"></input>
-                            <input type='submit' value="♥ <?php echo $post['like_number'] ?>">
+                            <input class="likebutton" type="hidden" value="<?php echo $post['post_id'] ?>" name="post_id"></input>
+                            <input class="likebutton" type='submit' value="♥ <?php echo $post['like_number'] ?>">
                         </form>
                     </small>
                     <?php

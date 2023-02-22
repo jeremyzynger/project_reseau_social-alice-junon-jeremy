@@ -48,6 +48,18 @@ body{
   border-radius: 4px;
 }
 
+.sendbutton {
+    background-color: #72A7C6; 
+    border: none;
+    color: #FFFFFF;
+    padding: 3px 19px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+
 .likebutton:hover {
     background-color: #a13958; 
   }
@@ -67,7 +79,6 @@ body{
 .nameuser {
     color: #222222;
     font-size: 2vw;
-
 }
 
 a{text-decoration: none; color:black;}
@@ -141,13 +152,15 @@ body>header #user:hover ul{
     width:80em;
     height: 30em;
     margin:0 auto 2em auto;
+    
 }
 #wrapper aside{
     background-color: #fff;
     flex:1;
     padding:1em;
     border-radius: 1em; 
-    text-align: center;   
+    text-align: center; 
+    box-shadow: -0.5px 1.5px 6px 4px #d8d8d8; 
 }
 #wrapper aside img{
     display: block;
@@ -162,12 +175,15 @@ body>header #user:hover ul{
     height: 80vh;
     overflow-y:  scroll;
 }
+
 #wrapper main article{
     background-color: #fff;
     padding:1em;
     margin-bottom: 1em ;
     border-radius: 1em;
+    box-shadow: -0.5px 1.5px 6px 4px #d8d8d8; 
 }
+
 #wrapper main article h3{
     margin:0;
     padding:0;
