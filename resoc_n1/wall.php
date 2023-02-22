@@ -34,19 +34,19 @@ include 'composants/header.php';
     ?>
 
     <aside>
-    <?php
-/**
- * Etape 3: récupérer le nom de l'utilisateur
- */
-$laQuestionEnSql = "SELECT * FROM users WHERE id= '$userId' ";
-$lesInformations = $mysqli->query($laQuestionEnSql);
-$user = $lesInformations->fetch_assoc();
-//@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
-//echo "<pre>" . print_r($user, 1) . "</pre>";
-// echo "<pre>" . print_r($_SESSION['connected_id']) . "</pre>";
-// echo "<pre>" . print_r($user["id"]) . "</pre>";
+        <?php
+        /**
+         * Etape 3: récupérer le nom de l'utilisateur
+         */
+        $laQuestionEnSql = "SELECT * FROM users WHERE id= '$userId' ";
+        $lesInformations = $mysqli->query($laQuestionEnSql);
+        $user = $lesInformations->fetch_assoc();
+        //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
+        //echo "<pre>" . print_r($user, 1) . "</pre>";
+        // echo "<pre>" . print_r($_SESSION['connected_id']) . "</pre>";
+        // echo "<pre>" . print_r($user["id"]) . "</pre>";
 
-$enCoursDeTraitement = isset($_POST['follow']);
+        $enCoursDeTraitement = isset($_POST['follow']);
         if ($enCoursDeTraitement) {
             $follower = $_SESSION['connected_id'];
             $followed = $user["id"];
@@ -61,10 +61,10 @@ $enCoursDeTraitement = isset($_POST['follow']);
             }
         }
 
-?>
-<img src="<?php echo $user["avatar"] ?>" alt="Portrait de l'utilisatrice" />
-<section>
-    <h3 class="nameuser"><?php echo $user["alias"] ?></h3>
+        ?>
+        <img src="<?php echo $user["avatar"] ?>" alt="Portrait de l'utilisatrice" />
+        <section>
+            <h3 class="nameuser"><?php echo $user["alias"] ?></h3>
             <!-- <p>My name is :
             </p> -->
         </section><?php
@@ -98,7 +98,8 @@ $enCoursDeTraitement = isset($_POST['follow']);
                     SELECT posts.content, posts.created, users.alias as author_name,
                     users.id,
                     posts.id as post_id,
-                    COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist 
+                    COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist, 
+                    GROUP_CONCAT(DISTINCT tags.id) AS tagId
                     FROM posts
                     JOIN users ON  users.id=posts.user_id
                     LEFT JOIN posts_tags ON posts.id = posts_tags.post_id  
@@ -146,7 +147,7 @@ $enCoursDeTraitement = isset($_POST['follow']);
                     $tags = explode(",", $post['taglist']);
                     foreach ($tags as $value) {
                     ?>
-                        <a href="tags.php?tag_id=<?php echo $tag['id'] ?>"><?php echo "#" . $value ?></a>
+                        <a href="tags.php?tag_id=<?php echo $post['tagId'] ?>"><?php echo "#" . $value ?></a>
                     <?php
                     }
                     ?>

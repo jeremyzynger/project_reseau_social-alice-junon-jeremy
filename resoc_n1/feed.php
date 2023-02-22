@@ -63,7 +63,8 @@ include 'composants/header.php';
                     posts.created,
                     users.alias as author_name,  
                     count(likes.id) as like_number,  
-                    GROUP_CONCAT(DISTINCT tags.label) AS taglist 
+                    GROUP_CONCAT(DISTINCT tags.label) AS taglist,
+                    GROUP_CONCAT(DISTINCT tags.id) AS tagId 
                     FROM followers 
                     JOIN users ON users.id=followers.followed_user_id
                     JOIN posts ON posts.user_id=users.id
@@ -74,6 +75,7 @@ include 'composants/header.php';
                     GROUP BY posts.id
                     ORDER BY posts.created DESC  
                     ";
+        //echo $laQuestionEnSql;
         $lesInformations = $mysqli->query($laQuestionEnSql);
         if (!$lesInformations) {
             echo ("Échec de la requete : " . $mysqli->error);
@@ -111,7 +113,7 @@ include 'composants/header.php';
                     $tags = explode(",", $post['taglist']);
                     foreach ($tags as $value) {
                     ?>
-                        <a href="tags.php?tag_id=<?php echo $tag['id'] ?>"><?php echo "#" . $value ?></a>
+                        <a href="tags.php?tag_id=<?php echo $post['tagId'] ?>"><?php echo "#" . $value ?></a>
                     <?php
                     }
                     ?>
