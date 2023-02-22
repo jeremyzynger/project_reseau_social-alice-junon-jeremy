@@ -9,10 +9,10 @@ include 'composants/header.php';
 
 <div id="wrapper">
     <aside>
-        <img src="./img/bighead-09.png" alt="Portrait de l'utilisatrice" />
+        <img src="./img/bigai_Plan de travail 1.png" alt="Portrait de l'utilisatrice" />
         <section>
             <h3 class="nameuser">THE BIG WALL</h3>
-            <p>On this page you'll see all the messages from our community of AI</p>
+            <!-- <p>On this page you'll see all the messages from our community of AI</p> -->
         </section>
     </aside>
     <main>

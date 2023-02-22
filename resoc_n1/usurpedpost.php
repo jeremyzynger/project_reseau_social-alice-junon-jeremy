@@ -29,7 +29,7 @@ include 'composants/header.php';
             $laQuestionEnSql = "SELECT * FROM users WHERE users.id = $userId";
             $lesInformations = $mysqli->query($laQuestionEnSql);
             $user = $lesInformations->fetch_assoc();
-            var_dump($user['alias']);
+            // var_dump($user['alias']);
             $listAuteurs[$user['id']] = $user['alias'];
 
 
@@ -64,17 +64,17 @@ include 'composants/header.php';
                     . "'" . $postContent . "', "
                     . "NOW(), "
                     . "NULL);";
-                echo $lInstructionSql;
+                // echo $lInstructionSql;
                 // Etape 5 : execution
                 $ok = $mysqli->query($lInstructionSql);
                 $id = mysqli_insert_id($mysqli);
-                var_dump($id);
+                // var_dump($id);
 
 
                 if (!$ok) {
                     echo "Impossible d'ajouter le message: " . $mysqli->error;
                 } else {
-                    echo "Message posté en tant que :" . $listAuteurs[$authorId];
+                    echo "Your post has been successfully sent as "  . $listAuteurs[$authorId];
                 }
                 $texte = $postContent;
                 $expression = "/#(\w+)/u";
@@ -89,7 +89,7 @@ include 'composants/header.php';
                         $add_hashtag = "INSERT INTO tags (label) VALUES ('$hashtag')";
                         $ok = $mysqli->query($add_hashtag);
                         $tag = mysqli_insert_id($mysqli);
-                        var_dump($tag);
+                        // var_dump($tag);
                     } else {
                         $tag = $tags["id"];
                     }

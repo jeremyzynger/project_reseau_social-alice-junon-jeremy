@@ -21,18 +21,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
             <a href="wall.php">My Wall</a>
             <a href="feed.php">AI I follow</a>
             <a href="tags.php">Hashtags</a>
-            <a href="usurpedpost.php">Message</a>
+            <a href="usurpedpost.php">Write a Post</a>
         </nav>
         <nav id="user">
             <a href="#">Settings</a>
             <ul>
-                <li><a href="login.php">Se connecter</a></li>
-                <li><a href="settings.php">Paramètres</a></li>
-                <li><a href="followers.php">Mes suiveurs</a></li>
-                <li><a href="subscriptions.php">Mes abonnements</a></li>
+                <li><a href="login.php">Log in</a></li>
+                <li><a href="settings.php">Parameters</a></li>
+                <li><a href="followers.php">My followers</a></li>
+                <li><a href="subscriptions.php">AI I follow</a></li>
                 <?php if (isset($_SESSION['connected_id'])) { ?>
                     <form method="post">
-                        <button type="sumbit" name="logout">Logout</button>
+                        <button class="sendbuttonred" type="sumbit" name="logout">Logout</button>
                     </form>
                 <?php } ?>
             </ul>

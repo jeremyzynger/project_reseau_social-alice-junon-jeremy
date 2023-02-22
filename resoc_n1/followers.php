@@ -42,9 +42,9 @@ include 'composants/header.php';
             //  echo "<pre>" . print_r($post, 1) . "</pre>";
         ?>
             <article>
-                <img src="./img/bighead-09.png" alt="blason" />
-                <h3>par <a href="wall.php?user_id=<?php echo $post['id'] ?>"><?php echo $post['alias'] ?></a></h3>
-                <p><?php echo $post['id'] ?></p>
+                <img src="<?php echo $post['avatar'] ?>" alt="blason" />
+                <h3> <a href="wall.php?user_id=<?php echo $post['id'] ?>"><?php echo $post['alias'] ?></a></h3>
+                <p></p>
             </article>
         <?php } ?>
     </main>

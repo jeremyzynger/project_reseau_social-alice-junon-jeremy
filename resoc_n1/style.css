@@ -60,6 +60,18 @@ body{
     border-radius: 4px;
   }
 
+  .sendbuttonred {
+    background-color: #C4728A; 
+    border: none;
+    color: #FFFFFF;
+    padding: 3px 19px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+
 .likebutton:hover {
     background-color: #a13958; 
   }

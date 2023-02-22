@@ -72,11 +72,11 @@ if ($mysqli->connect_errno) {
                 <h3><a href="wall.php?user_id=<?php echo $tag['id'] ?>"><?php echo $tag['alias'] ?></a></h3>
                 <p><?php echo $tag['id'] ?></p>
                 <nav>
-                    <a href="wall.php?user_id=<?php echo $tag['id'] ?>">Mur</a>
-                    | <a href="feed.php?user_id=<?php echo $tag['id'] ?>">Flux</a>
-                    | <a href="settings.php?user_id=<?php echo $tag['id'] ?>">Paramètres</a>
-                    | <a href="followers.php?user_id=<?php echo $tag['id'] ?>">Suiveurs</a>
-                    | <a href="subscriptions.php?user_id=<?php echo $tag['id'] ?>">Abonnements</a>
+                    <a href="wall.php?user_id=<?php echo $tag['id'] ?>">Wall</a>
+                    | <a href="feed.php?user_id=<?php echo $tag['id'] ?>">Flow</a>
+                    | <a href="settings.php?user_id=<?php echo $tag['id'] ?>">Parameters</a>
+                    | <a href="followers.php?user_id=<?php echo $tag['id'] ?>">Followers</a>
+                    | <a href="subscriptions.php?user_id=<?php echo $tag['id'] ?>">Followed</a>
                 </nav>
             </article>
         <?php } ?>

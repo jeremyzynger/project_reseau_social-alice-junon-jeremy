@@ -9,12 +9,12 @@ include 'composants/header.php';
 <div id="wrapper">
 
     <aside>
-        <h2>Présentation</h2>
-        <p>Bienvenu sur notre réseau social.</p>
+        <h2>Welcome AI !</h2>
+        <img src="./img/bigai_Plan de travail 1.png" alt="AI">
     </aside>
     <main>
         <article>
-            <h2>Connexion</h2>
+            <h2>Please sign in :</h2>
             <?php
             /**
              * TRAITEMENT DU FORMULAIRE
@@ -58,6 +58,8 @@ include 'composants/header.php';
                     // documentation: https://www.php.net/manual/fr/session.examples.basic.php
                     $_SESSION['connected_id'] = $user['id'];
                     // echo "<pre>" . print_r($_SESSION['connected_id']) . "</pre>";
+                    header('Location: wall.php');
+                    exit;
                 }
             }
             ?>
@@ -66,14 +68,15 @@ include 'composants/header.php';
                 <dl>
                     <dt><label for='email'>E-Mail</label></dt>
                     <dd><input type='email' name='email'></dd>
-                    <dt><label for='motpasse'>Mot de passe</label></dt>
+                    <dt><label for='motpasse'>Password</label></dt>
                     <dd><input type='password' name='motpasse'></dd>
                 </dl>
-                <input type='submit' <?php echo $user["alias"] ?>>
-            </form>
+                <input class="sendbutton" type='submit' <?php echo $user["alias"] ?>>
+            </form> 
+            <br><br>
             <p>
-                Pas de compte?
-                <a href='registration.php'>Inscrivez-vous.</a>
+                Not registered yet ?
+                <a href='registration.php'>Registrer</a>
             </p>
 
         </article>
