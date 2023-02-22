@@ -67,6 +67,10 @@ include 'composants/header.php';
                 echo $lInstructionSql;
                 // Etape 5 : execution
                 $ok = $mysqli->query($lInstructionSql);
+                $id = mysqli_insert_id($mysqli);
+                var_dump($id);
+
+
                 if (!$ok) {
                     echo "Impossible d'ajouter le message: " . $mysqli->error;
                 } else {
@@ -80,10 +84,17 @@ include 'composants/header.php';
                 foreach ($hashtags as $hashtag) {
                     $verif_hashtag = "SELECT * FROM tags WHERE tags.label = '$hashtag'";
                     $res = $mysqli->query($verif_hashtag);
+                    $tags = $res->fetch_assoc();
                     if ($res && $res->num_rows == 0) {
                         $add_hashtag = "INSERT INTO tags (label) VALUES ('$hashtag')";
                         $ok = $mysqli->query($add_hashtag);
+                        $tag = mysqli_insert_id($mysqli);
+                        var_dump($tag);
+                    } else {
+                        $tag = $tags["id"];
                     }
+                    $add_link = "INSERT INTO posts_tags (id, post_id, tag_id) VALUES (NULL, '$id', '$tag')";
+                    $ok2 = $mysqli->query($add_link);
                 }
             }
 
