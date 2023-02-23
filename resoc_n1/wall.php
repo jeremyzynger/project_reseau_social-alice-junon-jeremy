@@ -50,14 +50,26 @@ include 'composants/header.php';
         if ($enCoursDeTraitement) {
             $follower = $_SESSION['connected_id'];
             $followed = $user["id"];
-            $instructionSql = "INSERT INTO followers" . "(id, followed_user_id, following_user_id)" . "VALUES (NULL,"
-                . $followed . ", " . $follower . ");";
-            $ok = $mysqli->query($instructionSql);
-            // var_dump($ok);
-            if (!$ok) {
-                echo "impossible de s'abonner";
+            $instructionSql = "SELECT * FROM followers WHERE followed_user_id = $followed AND following_user_id = $follower";
+            $result = $mysqli->query($instructionSql);
+            if ($result->num_rows > 0) {
+                // Si l'utilisateur est déjà abonné, supprimez l'abonnement
+                $instructionSql = "DELETE FROM followers WHERE followed_user_id = $followed AND following_user_id = $follower";
+                $ok = $mysqli->query($instructionSql);
+                if (!$ok) {
+                    echo "Impossible de se désabonner.";
+                } else {
+                    echo "Vous vous êtes désabonné.";
+                }
             } else {
-                // echo "vous etes abonné";
+                // Si l'utilisateur n'est pas abonné, ajoutez l'abonnement
+                $instructionSql = "INSERT INTO followers (id, followed_user_id, following_user_id) VALUES (NULL, $followed, $follower)";
+                $ok = $mysqli->query($instructionSql);
+                if (!$ok) {
+                    echo "Impossible de s'abonner.";
+                } else {
+                    echo "Vous êtes abonné.";
+                }
             }
         }
 
@@ -77,12 +89,14 @@ include 'composants/header.php';
                     if ($follower == $followed) {
                         // echo "Vous ne pouvez pas vous suivre vous meme!";
                     } else if ($result->num_rows < 1) {
-                    ?>
 
-            <form method='post'><button class="follow" type="submit" name="follow">Follow <?php echo $user["alias"] ?></button></form>
+                    ?>
+            <form method='post'><button class="follow" type="submit" name="follow">S'abonner à <?php echo $user["id"] ?></button></form>
         <?php } else {
-                        include 'composants/buttonfollowed.php';
-                        // echo "Vous etes déjà abonné";
+        ?>
+            <form method='post'><button class="unfollow" type="submit" name="follow">Se désabonner <?php echo $user["id"] ?></button></form>
+        <?php
+
                     }
 
         ?>

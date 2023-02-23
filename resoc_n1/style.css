@@ -19,6 +19,19 @@ body{
   border-radius: 4px;
 }
 
+.unfollow {
+    background-color: #d90828; 
+    border: none;
+    color: #FFFFFF;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 1vw;
+    border-radius: 4px;
+  }
+
 .follow:hover {
     background-color: #32769e; 
 }
