@@ -69,7 +69,7 @@ include 'composants/header.php';
                     users.id as user_id, 
                     posts.created,
                     users.alias as author_name,
-                    count(likes.id) as like_number,
+                    count(DISTINCT likes.id) as like_number,
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist
                     FROM posts_tags as filter
                     JOIN posts ON posts.id=filter.post_id
@@ -125,15 +125,5 @@ include 'composants/header.php';
     </main>
 </div>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-

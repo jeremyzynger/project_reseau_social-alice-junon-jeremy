@@ -98,7 +98,7 @@ include 'composants/header.php';
                     SELECT posts.content, posts.created, users.alias as author_name,
                     users.id,
                     posts.id as post_id,
-                    COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist, 
+                    COUNT(DISTINCT likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist, 
                     GROUP_CONCAT(DISTINCT tags.id) AS tagId
                     FROM posts
                     JOIN users ON  users.id=posts.user_id
