@@ -187,6 +187,7 @@ body>header #user:hover ul{
     text-align: center; 
     box-shadow: -0.5px 1.5px 6px 4px #d8d8d8;
     height: 80vh;
+    overflow-y:  scroll;
 }
 #wrapper aside img{
     display: block;
