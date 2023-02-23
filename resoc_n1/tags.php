@@ -37,8 +37,9 @@ include 'composants/header.php';
         <img src="./img/hashtaggoodcolor-09.png" alt="Portrait de l'utilisatrice" />
         <section>
             <h3>HASHTAGS</h3> <br>
-            <p>
-            </p><?php
+
+            <article id="taglist">
+                <?php
 
                 $laQuestionEnSql = "SELECT * FROM `tags` LIMIT 50";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
@@ -51,10 +52,10 @@ include 'composants/header.php';
                 while ($tag = $lesInformations->fetch_assoc()) {
 
                 ?>
-                <b>
-                    <a href="tags.php?tag_id=<?php echo $tag['id'] ?>"><?php echo "#" . $tag['label'] ?></a>
-                </b>
-            <?php } ?>
+                    <h3><a href="tags.php?tag_id=<?php echo $tag['id'] ?>"><?php echo $tag['label'] ?></a></h3>
+
+                <?php } ?>
+            </article>
         </section>
     </aside>
     <main>

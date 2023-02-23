@@ -185,13 +185,19 @@ body>header #user:hover ul{
     padding:1em;
     border-radius: 1em; 
     text-align: center; 
-    box-shadow: -0.5px 1.5px 6px 4px #d8d8d8; 
+    box-shadow: -0.5px 1.5px 6px 4px #d8d8d8;
+    height: 80vh;
 }
 #wrapper aside img{
     display: block;
-    width:80%;
+    width:70%;
     margin:auto;
     margin-top: 2vw;
+}
+
+#taglist{
+    overflow-y: scroll; 
+    height: 40vh;
 }
 
 #wrapper main{
