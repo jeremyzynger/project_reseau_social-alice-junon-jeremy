@@ -20,7 +20,7 @@ body{
 }
 
 .unfollow {
-    background-color: #d90828; 
+    background-color: #C4728A; 
     border: none;
     color: #FFFFFF;
     padding: 15px 32px;
@@ -36,18 +36,10 @@ body{
     background-color: #32769e; 
 }
 
-.followalready {
-    background-color: #C4728A; 
-    border: none;
-    color: #FFFFFF;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 1vw;
-    border-radius: 4px;
-  }
+.unfollow:hover {
+    background-color: #97576a;; 
+}
+
 
 .likebutton {
   background-color: #C4728A; 
@@ -60,6 +52,19 @@ body{
   font-size: 16px;
   border-radius: 4px;
 }
+
+.unlikebutton {
+    background-color: #05947c; 
+    border: none;
+    color: #FFFFFF;
+    padding: 3px 19px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+
 
 .sendbutton {
     background-color: #72A7C6; 
@@ -87,6 +92,10 @@ body{
 
 .likebutton:hover {
     background-color: #a13958; 
+  }
+
+.unlikebutton:hover {
+    background-color: #057764; 
   }
 
 .likebutton:hover::after {

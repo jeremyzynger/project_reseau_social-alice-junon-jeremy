@@ -57,18 +57,18 @@ include 'composants/header.php';
                 $instructionSql = "DELETE FROM followers WHERE followed_user_id = $followed AND following_user_id = $follower";
                 $ok = $mysqli->query($instructionSql);
                 if (!$ok) {
-                    echo "Impossible de se désabonner.";
+                    //echo "Impossible de se désabonner.";
                 } else {
-                    echo "Vous vous êtes désabonné.";
+                    //echo "Vous vous êtes désabonné.";
                 }
             } else {
                 // Si l'utilisateur n'est pas abonné, ajoutez l'abonnement
                 $instructionSql = "INSERT INTO followers (id, followed_user_id, following_user_id) VALUES (NULL, $followed, $follower)";
                 $ok = $mysqli->query($instructionSql);
                 if (!$ok) {
-                    echo "Impossible de s'abonner.";
+                    //echo "Impossible de s'abonner.";
                 } else {
-                    echo "Vous êtes abonné.";
+                    //echo "Vous êtes abonné.";
                 }
             }
         }
@@ -149,10 +149,24 @@ include 'composants/header.php';
                 </div>
                 <footer>
                     <small>
+                        <?php
+                        // vérifier si l'utilisateur a déjà aimé le post
+                        $liked = false;
+                        $session_id = $_SESSION['connected_id'];
+                        $sql2 = "SELECT * FROM likes WHERE user_id=$session_id AND post_id={$post['post_id']}";
+                        $result2 = $mysqli->query($sql2);
+                        if (mysqli_num_rows($result2) > 0) {
+                            $liked = true;
+                        }
+                        ?>
+
                         <form method="post">
-                            <input class="likebutton" type="hidden" value="<?php echo $post['post_id'] ?>" name="post_id"></input>
-                            <input class="likebutton" type='submit' value="♥ <?php echo $post['like_number'] ?>">
+                            <input type="hidden" value="<?php echo $post['post_id'] ?>" name="post_id"></input>
+                            <input type="hidden" value="<?php echo $liked ? 'unlike' : 'like' ?>" name="action"></input>
+                            <input class="<?php echo $liked ? 'unlikebutton' : 'likebutton' ?>" type='submit' value="♥ <?php echo $post['like_number'] ?>">
                         </form>
+
+
                     </small>
                     <?php
 
