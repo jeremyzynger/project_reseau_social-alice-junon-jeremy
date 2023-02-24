@@ -52,7 +52,7 @@ include 'composants/header.php';
     <main>
         <?php
 
-        include('addlike.php');
+        include('composants/addlike.php');
         /**
          * Etape 3: récupérer tous les messages des abonnements
          */
@@ -101,10 +101,9 @@ include 'composants/header.php';
                 </div>
                 <footer>
                     <small>
-                        <form method="post">
-                            <input class="likebutton" type="hidden" value="<?php echo $post['post_id'] ?>" name="post_id"></input>
-                            <input class="likebutton" type='submit' value="♥ <?php echo $post['like_number'] ?>">
-                        </form>
+                        <?php
+                        include("composants/addlikecolor.php")
+                        ?>
                     </small>
                     <?php
 

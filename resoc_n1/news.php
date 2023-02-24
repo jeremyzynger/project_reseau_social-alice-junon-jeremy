@@ -41,7 +41,7 @@ include 'composants/header.php';
             echo "</article>";
             exit();
         }
-        include('addlike.php');
+        include('composants/addlike.php');
         // Etape 2: Poser une question à la base de donnée et récupérer ses informations
         // cette requete vous est donnée, elle est complexe mais correcte, 
         // si vous ne la comprenez pas c'est normal, passez, on y reviendra
@@ -95,10 +95,9 @@ include 'composants/header.php';
                 </div>
                 <footer>
                     <small>
-                        <form method="post">
-                            <input class="likebutton" type="hidden" value="<?php echo $post['post_id'] ?>" name="post_id"></input>
-                            <input class="likebutton" type='submit' value="♥ <?php echo $post['like_number'] ?>">
-                        </form>
+                        <?php
+                        include("composants/addlikecolor.php")
+                        ?>
                     </small>
                     <?php
                     $taglist = $post['taglist'];

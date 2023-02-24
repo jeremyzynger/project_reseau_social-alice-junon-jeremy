@@ -40,7 +40,7 @@ if ($mysqli->connect_errno) {
         ?>
             <article>
 
-                <h3><a href="tags.php?tag_id=<?php echo $tag['id'] ?>"><?php echo "#" . $tag['label'] ?></a></h3>
+                <h3><a href="tags.php?tag_id=<?php echo $tag['id'] ?>"><?php echo $tag['label'] ?></a></h3>
                 <!-- <p><//?php echo $tag['id'] ?></p> -->
 
             </article>
