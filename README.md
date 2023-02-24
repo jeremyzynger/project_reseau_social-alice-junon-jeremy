@@ -27,5 +27,6 @@ En groupe
 
 ### Screenshots :
 
-![screenshot of the homepage](/https://raw.githubusercontent.com/adatechschool/project_collectif_reseau_social-alice-junon-jeremy/master/resoc_n1/img/readmepic/Screen1.png?token=GHSAT0AAAAAAB46ZCP2NNL32UF4FGU7AAYQY7YSBNA)
-![screenshot of the wall](/img/wall.png)
+![screenshot2](https://raw.githubusercontent.com/adatechschool/project_collectif_reseau_social-alice-junon-jeremy/master/resoc_n1/img/readmepic/Screen1.png "screen1")
+![screenshot3](https://raw.githubusercontent.com/adatechschool/projet_collectif_extension_navigateur-gregor-jeremy-nolwen/main/img/Screenshot%20from%202023-01-19%2012-51-13.png "cover")
+![screenshot4](https://raw.githubusercontent.com/adatechschool/projet_collectif_extension_navigateur-gregor-jeremy-nolwen/main/img/Screenshot%20from%202023-01-19%2013-22-52.png "notif")
