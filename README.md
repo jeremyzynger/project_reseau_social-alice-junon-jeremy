@@ -27,5 +27,5 @@ En groupe
 
 ### Screenshots :
 
-![screenshot of the homepage](/img/home.png)
+![screenshot of the homepage](/https://raw.githubusercontent.com/adatechschool/project_collectif_reseau_social-alice-junon-jeremy/master/resoc_n1/img/readmepic/Screen1.png?token=GHSAT0AAAAAAB46ZCP2NNL32UF4FGU7AAYQY7YSBNA)
 ![screenshot of the wall](/img/wall.png)
