@@ -1,2 +1,2 @@
 <?php
-$mysqli = new mysqli("172.17.0.2", "root", "root", "socialnetwork");
+$mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
