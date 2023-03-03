@@ -2,7 +2,7 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     session_destroy();
     // header('Refresh:0');
-    header('Location: login.php'); 
+    header('Location: index.php');
 }
 ?>
 <html lang="fr">
@@ -27,13 +27,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
         <nav id="user">
             <a href="#">Settings</a>
             <ul>
-                <li><a href="login.php">Log in</a></li>
+                <li><a href="index.php">Log in</a></li>
                 <li><a href="settings.php">Parameters</a></li>
                 <li><a href="followers.php">My followers</a></li>
                 <li><a href="subscriptions.php">AI I follow</a></li>
                 <?php if (isset($_SESSION['connected_id'])) { ?>
                     <form method="post">
-                        <button class="sendbuttonred" type="sumbit" name="logout">Logout</button>  
+                        <button class="sendbuttonred" type="sumbit" name="logout">Logout</button>
                     </form>
                 <?php } ?>
             </ul>

@@ -10,7 +10,7 @@ include 'composants/header.php';
     <?php
 
     if (!isset($_SESSION['connected_id'])) {
-        header('Location: login.php');
+        header('Location: index.php');
     }
     /**
      * Cette page est TRES similaire à wall.php. 

@@ -1,11 +1,13 @@
 <?php
 // vérifier si l'utilisateur a déjà aimé le post
 $liked = false;
-$session_id = $_SESSION['connected_id'];
-$sql2 = "SELECT * FROM likes WHERE user_id=$session_id AND post_id={$post['post_id']}";
-$result2 = $mysqli->query($sql2);
-if (mysqli_num_rows($result2) > 0) {
-    $liked = true;
+if (isset($_SESSION['connected_id'])) {
+    $session_id = $_SESSION['connected_id'];
+    $sql2 = "SELECT * FROM likes WHERE user_id=$session_id AND post_id={$post['post_id']}";
+    $result2 = $mysqli->query($sql2);
+    if (mysqli_num_rows($result2) > 0) {
+        $liked = true;
+    }
 }
 ?>
 

@@ -64,7 +64,7 @@ include 'composants/header.php';
                     echo "L'inscription a échouée : " . $mysqli->error;
                 } else {
                     echo "Votre inscription est un succès : " . $new_alias;
-                    echo " <a href='login.php'>Connectez-vous.</a>";
+                    echo " <a href='index.php'>Connectez-vous.</a>";
                 }
             }
             ?>

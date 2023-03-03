@@ -63,7 +63,7 @@ include 'composants/header.php';
                 }
             }
             ?>
-            <form action="login.php" method="post">
+            <form action="index.php" method="post">
                 <input type='hidden' name='???' value='achanger'>
                 <dl>
                     <dt><label for='email'>E-Mail</label></dt>
@@ -72,7 +72,7 @@ include 'composants/header.php';
                     <dd><input type='password' name='motpasse'></dd>
                 </dl>
                 <input class="sendbutton" type='submit' <?php echo $user["alias"] ?>>
-            </form> 
+            </form>
             <br><br>
             <p>
                 Not registered yet ?

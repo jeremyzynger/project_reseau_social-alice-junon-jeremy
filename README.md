@@ -12,10 +12,7 @@ En groupe
 
 ### Langage de programmation :
 
-- PHP
-- SQL
-- CSS
-- HTML
+<br/> [![My Skills](https://skillicons.dev/icons?i=html,css,php,mysql,vscode,ai,github,git)](https://skillicons.dev)
 
 ### Technologie :
 

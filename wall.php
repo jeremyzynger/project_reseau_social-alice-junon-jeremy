@@ -19,7 +19,7 @@ include 'composants/header.php';
      * ... mais en résumé c'est une manière de passer des informations à la page en ajoutant des choses dans l'url
      */
     if (!isset($_SESSION['connected_id'])) {
-        header('Location: login.php');
+        header('Location: index.php');
     } else if (isset($_SESSION['connected_id']) && isset($_GET['user_id'])) {
         $userId = intval($_GET['user_id']);
     } else if (isset($_SESSION['connected_id']) && !isset($_GET['user_id'])) {
