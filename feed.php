@@ -11,16 +11,10 @@ include 'composants/header.php';
 
     if (!isset($_SESSION['connected_id'])) {
         header('Location: index.php');
-    }
-    /**
-     * Cette page est TRES similaire à wall.php. 
-     * Vous avez sensiblement à y faire la meme chose.
-     * Il y a un seul point qui change c'est la requete sql.
-     */
-    /**
-     * Etape 1: Le mur concerne un utilisateur en particulier
-     */
-    $userId = intval($_SESSION['connected_id']);
+    } else if (isset($_SESSION['connected_id']) && isset($_GET['user_id'])) {
+        $userId = intval($_GET['user_id']);
+    } else
+        $userId = intval($_SESSION['connected_id']);
     ?>
     <?php
     /**
