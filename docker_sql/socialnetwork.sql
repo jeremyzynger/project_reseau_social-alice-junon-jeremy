@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 28, 2023 at 05:52 PM
+-- Generation Time: Mar 06, 2023 at 10:58 AM
 -- Server version: 8.0.32-0ubuntu0.22.04.2
 -- PHP Version: 8.1.16
 
@@ -67,9 +67,9 @@ INSERT INTO `likes` (`id`, `user_id`, `post_id`) VALUES
 (25, 5, 2),
 (31, 5, 6),
 (24, 5, 7),
+(37, 5, 8),
 (17, 5, 9),
-(27, 5, 11),
-(12, 7, 10);
+(39, 5, 12);
 
 -- --------------------------------------------------------
 
@@ -101,7 +101,7 @@ INSERT INTO `posts` (`id`, `user_id`, `content`, `created`, `parent_id`) VALUES
 (9, 1, 'Le #féminisme est un ensemble de mouvements et d\'idées philosophiques qui partagent un but commun : définir, promouvoir et atteindre l\'égalité #politique, économique, culturelle, sociale et juridique entre les femmes et les hommes. Le féminisme a donc pour objectif d\'abolir, dans ces différents domaines, les inégalités homme-femme dont les femmes sont les principales victimes, et ainsi de promouvoir les droits des femmes dans la société civile et dans la vie privée. ', '2020-11-20 18:26:50', NULL),
 (10, 7, 'Le #sport est un ensemble d\'exercices physiques se pratiquant sous forme de jeux individuels ou collectifs pouvant donner lieu à des compétitions. Le sport est un phénomène presque universel dans le temps et dans l\'espace humain. La Grèce antique, la Rome antique, Byzance, l\'Occident médiéval puis moderne, mais aussi l\'Amérique précolombienne ou l\'Asie, sont tous marqués par l\'importance du sport. Certaines périodes sont surtout marquées par des interdits. ', '2020-11-30 18:31:16', NULL),
 (11, 5, 'Bonjour, j\'aime #AdaTechSchool.', '2023-02-24 11:23:45', NULL),
-(12, 5, 'Salut je suis #Mehmet', '2023-02-24 17:36:46', NULL),
+(12, 5, 'Salut je suis #Jeremy', '2023-02-24 17:36:46', NULL),
 (13, 2, 'J\'adore le #sport ! Que ce soit la course à pied, le football ou la natation, j\'aime me mettre au défi et repousser mes limites. Le sport me permet de me vider la tête et de me sentir bien dans mon corps.', '2023-02-28 14:36:16', NULL);
 
 -- --------------------------------------------------------
@@ -190,7 +190,7 @@ INSERT INTO `users` (`id`, `email`, `password`, `alias`, `avatar`) VALUES
 (3, 'bea@test.org', '6384e2b2184bcbf58eccf10ca7a6563c', 'Béatrice', './avatars/avatar3.png'),
 (4, 'zoe@test.org', '6384e2b2184bcbf58eccf10ca7a6563c', 'Zoé', './avatars/avatar4.png'),
 (5, 'felicie@test.org', '6384e2b2184bcbf58eccf10ca7a6563c', 'Félicie', './avatars/avatar5.png'),
-(7, 'jeremyzynger@gmail.com', '6384e2b2184bcbf58eccf10ca7a6563c', 'Jeremy', '');
+(7, 'jeremyzynger@gmail.com', '6384e2b2184bcbf58eccf10ca7a6563c', 'Jeremy', './avatars/avatar7.png');
 
 --
 -- Indexes for dumped tables
@@ -258,7 +258,7 @@ ALTER TABLE `followers`
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `posts`

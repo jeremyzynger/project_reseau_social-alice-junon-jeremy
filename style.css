@@ -188,6 +188,12 @@ body>header #user:hover ul{
     margin:0 auto 2em auto;
     
 }
+
+#navpic{
+    max-width: 1em;
+    float: left;
+}
+
 #wrapper aside{
     background-color: #fff;
     flex:1;

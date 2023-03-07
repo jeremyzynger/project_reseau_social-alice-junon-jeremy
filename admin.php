@@ -70,8 +70,9 @@ if ($mysqli->connect_errno) {
         ?>
             <article>
                 <h3><a href="wall.php?user_id=<?php echo $tag['id'] ?>"><?php echo $tag['alias'] ?></a></h3>
-                <p><?php echo $tag['id'] ?></p>
+
                 <nav>
+                    <img id="navpic" src="<?php echo $tag["avatar"] ?>" alt="Portrait de l'utilisatrice" />
                     <a href="wall.php?user_id=<?php echo $tag['id'] ?>">Wall</a>
                     | <a href="feed.php?user_id=<?php echo $tag['id'] ?>">Flow</a>
                     | <a href="settings.php?user_id=<?php echo $tag['id'] ?>">Parameters</a>
